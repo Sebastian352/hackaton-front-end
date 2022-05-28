@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View,SafeAreaView, StatusBar, Image,Button } from 'react-native'
+import { StyleSheet, Text, View,SafeAreaView, StatusBar, Image,Button,TouchableOpacity } from 'react-native'
 import React from 'react'
 import Ionicons from '@expo/vector-icons/Ionicons';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
@@ -6,19 +6,38 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 export default function UserScreen() {
   return (
     <SafeAreaView style = {styles.container}>
+            <View style = {styles.upper}>
+                <View style={styles.underUpper}>
+                        <Text style={styles.mediumStyleText}>pl</Text>
+                </View>
+            </View>
 
-      
-        <View style = {styles.menu}>
-            <FontAwesome.Button name = 'home' iconStyle={styles.iconStyle} style={styles.lb}>
-                <Text style = {styles.mediumStyleText}>Home</Text>
-            </FontAwesome.Button>
-            <FontAwesome.Button name = 'trophy' style={styles.lb} >
-                Leaderboards
-            </FontAwesome.Button>
-            <FontAwesome.Button name = 'user' style={styles.lb}>
-                User
-            </FontAwesome.Button> 
-        </View>
+
+
+            <View style = {styles.menu}>
+
+                <TouchableOpacity>
+                    <View style = {styles.leftButton}>
+                        <Image source={require('../assets/home.png')} style = {styles.imageStyle} />
+                        <Text style = {styles.mediumStyleText}>Home</Text>
+                    </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity>
+                    <View style = {styles.middleButton}>
+                        <Image source={require('../assets/trophy.png')} style = {styles.trophyStyle} />
+                        <Text style = {styles.mediumStyleText}>Leaderboards</Text>
+                    </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity>
+                    <View style = {styles.rightButton} >
+                        <Image source={require('../assets/icon96.png')} style = {styles.imageStyle} />
+                        <Text style = {styles.mediumStyleText}>User</Text>
+                    </View>
+                </TouchableOpacity>
+
+            </View>
         <StatusBar hidden={true} />
     </SafeAreaView>
   )
@@ -26,38 +45,47 @@ export default function UserScreen() {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      borderRadius:30,
       justifyContent:'center',
       backgroundColor: '#F3EDEB',
-      
+    },
+    upper:{
+        flex: 0.12,
+        justifyContent:'center',
+        alignItems:'flex-end',
+        flexDirection: 'row',
+
+        borderBottomLeftRadius:30,
+        borderBottomRightRadius:30,
+        backgroundColor: '#0cb16c',
+        overflow:'visible'
+    },
+    underUpper:{
+        backgroundColor:'white',
+        width:300,
+        height:50,
+        paddingTop:50,
+        borderRadius:30
     },
     menu:{
-        flex: 0.5,
-        borderRadius:30,
+        flex: 1,
         justifyContent:'center',
-        alignItems:'flex-start',
+        alignItems:'flex-end',
         flexDirection: 'row',
         backgroundColor: '#F3EDEB',
-        shadowColor: 'black',
-        boxShadow: "0px 1px 2px 3px rgba(0, 0, 0, 0.25)",
-    }, 
 
-    lb:{
-        justifyContent:'center',
-        alignContent:'center',
-        backgroundColor:'white',
-        height: 10,
-        flexDirection:'row',
-        flex:1
     }, 
+    button: {
+        alignItems: "center",
+        backgroundColor: "#DDDDDD",
+        padding: 10
+      },
 
     leftButton:{
         backgroundColor: 'white',
         alignItems:'center',
         alignContent:'center',
         justifyContent:'center',
-        flex:1,
-        flexBasis:100,
+        paddingLeft:100,
         height: 100,
     },
 
@@ -75,18 +103,17 @@ const styles = StyleSheet.create({
 
     rightButton:{
         backgroundColor: 'white',
-        alignContent:'center',
-        justifyContent:'center',
         alignItems:'center',
-        flexBasis:100,
-        flex:1,
+        justifyContent:'center',
+        width:'100%',
+        paddingRight:100,
         height: 100,
 
     },
 
     imageStyle:{
         width:50,
-        height:50
+        height:50,
     },
     
     iconStyle:{
