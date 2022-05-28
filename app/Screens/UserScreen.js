@@ -3,7 +3,15 @@ import React from 'react'
 import Ionicons from '@expo/vector-icons/Ionicons';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 
-
+const text = {
+    fontStyle: "normal",
+    color: "#000000",
+    fontSize: 20,
+    fontStyle: "normal",
+    width: 350,
+    alignSelf:'flex-end',
+    marginTop:30
+}
 
 export default function UserScreen() {
   return (
@@ -12,10 +20,27 @@ export default function UserScreen() {
 
             </View>
             <View style={styles.underUpper}>
-                <Text style = {styles.boldStyleText}>
+                <Text style = {[styles.boldStyleText,styles.aboveText]}>
                         Nearest center
-                </Text>                
+                </Text>
+                <Text style = {[styles.mediumStyleText,styles.belowText]}>
+                        may, 28 from 9:00 to 17:00
+                </Text>  
+                <Text style = {[styles.mediumStyleText,styles.belowText]}>
+                        Observator, 17  
+                </Text>
+                <Image source={require('../assets/QR.png')} style = {[styles.imageStyle,styles.qrStyle]}></Image>            
             </View>
+
+            <View>
+                <Text style = {[text]}>
+                    3 recycling collection points are available near your
+                </Text>
+            </View>
+
+
+
+
 
 
             <View style = {styles.menu}>
@@ -122,7 +147,13 @@ const styles = StyleSheet.create({
         width:50,
         height:50,
     },
-    
+    qrStyle:{
+        width:80,
+        height:80,
+        alignSelf:'flex-end',
+        marginRight:20,
+        marginTop:-75
+    },
     iconStyle:{
         backgroundColor:'black'
     },
@@ -137,6 +168,17 @@ const styles = StyleSheet.create({
         fontSize: 14,
         textAlign:'justify',
         fontWeight:'500'
+    },
+    aboveText:{
+        paddingLeft:15,
+        marginTop:-35,
+    },
+    belowText:{
+        fontWeight: '500',
+        fontStyle: "normal",
+        color: "#b3a8a8",
+        fontSize: 14,
+        paddingLeft:15,
     },
     boldStyleText:{
         color: 'black',
